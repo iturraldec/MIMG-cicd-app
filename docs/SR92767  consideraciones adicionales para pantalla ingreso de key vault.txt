@@ -1,0 +1,17 @@
+1) NombreVariableCompleto: NombreCortoAplicacion-Destino--valor_usuario--
+
+2) Cabecera (aplicacion)
+   Secret (detalle)
+
+ActivoMil 
+  Id  1
+
+SecretsAplicacion
+   1  1  ActivosMil-Cloud--CONNECTIONSTRING-ACTIVOMIL-BUS-VAR--
+   2  1  ActivosMil-Cloud--USUARIO-CORREO-VAR--
+   3  1  ActivosMil-Cloud--PASSWORD-USUARIO-BUS-VAR--
+   4
+3) mostrar claves, habilitar boton que oculte o muestre el valor (en el grid)
+
+4) menu: 
+   HOME	  Crear Secret String	Listar Secret String	Salir
