@@ -8,6 +8,7 @@ import Ambiente from './Components/Ambiente';
 import Aplicacion from './Components/Aplicacion';
 import Destino from './Components/Destino';
 import Variable from './Components/Variable';
+import Valor from './Components/Valor';
 
 function App() {
   //
@@ -15,6 +16,7 @@ function App() {
   const { error, isLoaded, aplicaciones, codAplicacion, handleCodAplicacion } = useAplicacion();
   const { destinos, codDestino, handleCodDestino } = useDestino();
   const [variable,setVariable] = useState('');
+  const [valor,setValor] = useState('');
   const [secretString,setSecretString] = useState('?');
 
   //
@@ -23,8 +25,18 @@ function App() {
     setVariable(e.target.value);
   }
 
+  const handleValor = e => {
+    setValor(e.target.value);
+    console.log(valor);
+  }
+
   //
   const createSecretString = () => {
+    if (variable.length === 0) {
+      alert('Error: Debe ingresar el nombre de la variable.');
+      return;
+    }
+    
     let cadena = `${codAplicacion}-${codDestino}--${variable}--`;
 
     setSecretString(cadena);
@@ -44,7 +56,6 @@ function App() {
       </header>
 
       <div className='formulario'>
-        <section>
           <Ambiente ambientes={ambientes} onChange={codigo => handleCodAmbiente(codigo)} />
           
           <Aplicacion 
@@ -58,8 +69,7 @@ function App() {
 
           <Variable onChange={ e => handleVariable(e) } />
 
-        </section>
-
+          <Valor onChange={ e => handleValor(e) } />
       </div>
 
       <div className='secret-string'>
@@ -68,7 +78,7 @@ function App() {
         
       <div className='contenedor-botones'>
         <button className="limpiar" onClick={ () => setSecretString('?') }>Limpiar</button>
-        <button className="generar" onClick={ createSecretString }>Generar Secret String</button>
+        <button className="generar" onClick={ createSecretString }>Generar String</button>
         <button className="enviar" >Enviar</button>
       </div>
       
